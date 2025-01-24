@@ -3,6 +3,8 @@ import os
 from googleapiclient.discovery import build
 from dotenv import load_dotenv
 
+load_dotenv()
+
 # Set up the API client
 api_service_name = "youtube"
 api_version = "v3"
@@ -34,7 +36,7 @@ def filter_captions_by_language(captions, language):
 
 # Example usage
 video_id = "M7FIvfx5J10"
-captions = list_captions(video_id, from_json=False, json_path='output.json')
+captions = list_captions(video_id, from_json=True, json_path='output.json')
 filtered_captions = filter_captions_by_language(captions, 'en')
 
 print(json.dumps(filtered_captions, indent=4))
