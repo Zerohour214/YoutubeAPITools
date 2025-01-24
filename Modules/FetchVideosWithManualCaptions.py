@@ -33,10 +33,7 @@ def list_captions(video_id, from_json=False, json_path=None):
 def filter_captions_by_language(captions, language):
     return [caption for caption in captions['items'] if caption['snippet']['language'] == language and caption['snippet']['trackKind'] == 'standard']
 
-
-# Example usage
-video_id = "M7FIvfx5J10"
-captions = list_captions(video_id, from_json=True, json_path='output.json')
-filtered_captions = filter_captions_by_language(captions, 'en')
-
-print(json.dumps(filtered_captions, indent=4))
+def get_filtered_captions(video_id, language, from_json=False, json_path=None):
+    captions = list_captions(video_id, from_json, json_path)
+    filtered_captions = filter_captions_by_language(captions, language)
+    return filtered_captions
